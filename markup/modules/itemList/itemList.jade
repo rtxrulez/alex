@@ -1,5 +1,5 @@
 include ../item/item
 mixin itemList(data)
-    .itemList
+    .itemList#wrapper
         each val in data
-            +item(val.imageUrl, alt)
+            +item(val.minImgUrl, val.bigImgUrl,  val.alt)

@@ -1,4 +1,4 @@
-mixin item(url, alt)
-    article.item
-        a.image-bg(href="", style="background-image: url("+url+")")
-            img.image(src=url, alt=alt)
+mixin item(minImgUrl, bigImgUrl, alt)
+    a.item(href=bigImgUrl, style="background-image: url("+minImgUrl+")")
+        img.image(src=minImgUrl, alt=alt)
+        h2.item-title= alt
