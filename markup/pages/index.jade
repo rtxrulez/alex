@@ -4,6 +4,8 @@ html(class="no-js", lang="ru")
     include ../modules/head/head
     include ../modules/example/example
     include ../modules/footer/footer
+    include ../modules/itemList/itemList
+
 
     head
         +head(head.defaults)
@@ -11,8 +13,7 @@ html(class="no-js", lang="ru")
         |%=symbols=%
 
         section.page__wrapper
-            article()
-        
+            +itemList(itemList)
 
 
         script(src='%=static=%js/separate-js/svg4everybody.min.js')
