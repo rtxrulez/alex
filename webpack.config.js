@@ -18,7 +18,10 @@ let preLoaders = [
         loader: 'source-map-loader'
     }
 ];
-let loaders = [];
+let loaders = [{
+    test: /\.json$/,
+    loader: 'json'
+}];
 let plugins = [
     new webpack.DefinePlugin({
         'process.env': {
@@ -45,6 +48,12 @@ if (compressJs) {
         }),
         new webpack.optimize.DedupePlugin()
     );
+}
+
+if (tars.config.js.webpack.providePlugin) {
+    plugins.push(
+        new webpack.ProvidePlugin(tars.config.js.webpack.providePlugin)
+    )
 }
 
 if (tars.options.watch.isActive && tars.config.js.webpack.useHMR) {
@@ -132,8 +141,9 @@ module.exports = {
 
     resolve: {
         alias: {
-            modules: path.resolve('./markup/modules'),
-            static: path.resolve('./markup/' + staticFolderName)
+            modules: path.resolve(`./markup/${tars.config.fs.componentsFolderName}`),
+            components: path.resolve(`./markup/${tars.config.fs.componentsFolderName}`),
+            static: path.resolve(`./markup/${staticFolderName}`)
         }
     },
 

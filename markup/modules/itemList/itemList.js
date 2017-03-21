@@ -4,3 +4,7 @@ $('.item').magnificPopup({
     enabled:true
   }
 });
+
+jQuery(function($){
+    console.log('тут кот')
+});
